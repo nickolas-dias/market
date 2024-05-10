@@ -8,6 +8,7 @@ body {
   margin: 0 auto;
   padding: 15px;
 }
+
 header {
   display: flex;
   flex-direction: row;
@@ -16,12 +17,15 @@ header {
 }
 
 #title {
+  display: flex;
   flex-direction: column;
-  line-height: 10px;
+  align-items: center;
 }
 
 .name {
   color: #fff;
+  margin-top: -20px;
+  margin-left: -38px;
 }
 
 ul {
@@ -47,7 +51,6 @@ a:hover {
 h1 {
   font-weight: 200;
   color: #f6bd20;
-  text-align: center;
 }
 
 .purchase {
@@ -92,6 +95,7 @@ h1 {
 }
 
 .product img {
+  display: flex;
   width: 10%;
   height: auto;
   border-radius: 5px;
