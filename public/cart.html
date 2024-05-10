@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="market">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seu Carrinho - Ecommerce</title>
+    <link rel="stylesheet" href="./assets/css/cart.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  </head>
+
+  <body id="cart-page" ng-controller="CartController">
+    <header>
+      <div id="title">
+        <h1>Poke</h1>
+        <h1 class="name">Nix</h1>
+      </div>
+
+      <ul>
+        <a href="./market.html" id="voltar"
+          ><li><i class="fa-solid fa-arrow-left"></i></li
+        ></a>
+        <a href="./index.html"
+          ><li><i class="fas fa-home"></i></li
+        ></a>
+        <a href="/purchases.html" id="sair" ng-if="isAuthenticated"
+          ><li><i class="fa-solid fa-basket-shopping"></i></li
+        ></a>
+        <a href="./login.html" id="sair" ng-click="logout()"
+          ><li><i class="fa-solid fa-right-from-bracket"></i></li
+        ></a>
+      </ul>
+    </header>
+
+    <div class="container mt-5 pt-5">
+      <div ng-if="items.length > 0" class="row justify-content-center">
+        <div class="col-md-8">
+          <div ng-repeat="item in items" class="row cart-item">
+            <img
+              class="col-md-1 mx-auto"
+              ng-src="{{item.product.imageUrl}}"
+              alt="{{item.product.name}}"
+            />
+            <div class="col-md-10 d-flex flex-column flex-1">
+              <h4>{{item.product.name}}</h4>
+              <div class="row align-items-center">
+                <div class="col-xxl-3 input-container me-5">
+                  <div class="input-group">
+                    <button
+                      ng-disabled="item.quantity <= 1"
+                      ng-click="decrease(item.id)"
+                      class="btn btn-outline-secondary btn-quantity"
+                      type="button"
+                    >
+                      -
+                    </button>
+                    <input
+                      ng-change="onQuantityChange(item.id)"
+                      type="text"
+                      class="form-control input-quantity"
+                      placeholder=""
+                      aria-label="Example text with button addon"
+                      ng-model="item.quantity"
+                    />
+                    <button
+                      ng-click="increase(item.id)"
+                      class="btn btn-outline-secondary btn-quantity"
+                      type="button"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+
+                <p class="col-xxl-2 me-5">
+                  <strong>Valor:</strong> {{item.price | currency}}
+                </p>
+                <p class="col-xxl-2 me-5">
+                  <strong>Subtotal:</strong> {{item.price * item.quantity |
+                  currency}}
+                </p>
+              </div>
+            </div>
+            <button
+              ng-click="deleteCartItem(item.product.id)"
+              type="button"
+              class="btndelete"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="currentColor"
+                viewBox="0 0 256 256"
+              >
+                <path
+                  d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="totals">
+            <h3>Realizar compra</h3>
+            <p class="mt-4"><strong>Total:</strong> {{total | currency}}</p>
+            <button ng-click="closeCart()" class="btn-finish">
+              Finalizar compra
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div ng-if="items.length == 0" class="row">
+        <div class="col-md-12 text-center">
+          <p class="fs-5">
+            Nenhum item no carrinho.
+            <a href="./market.html">Veja nossos produtos!</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://kit.fontawesome.com/b251dd8db2.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./assets/js/lib/jwt-decode.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/services/session.service.js"></script>
+    <script src="./assets/js/services/admin.service.js"></script>
+    <script src="./assets/js/controllers/cart_controller.js"></script>
+  </body>
+</html>

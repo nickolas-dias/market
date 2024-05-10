@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="market">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/login.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>Login</title>
+  </head>
+  <body ng-controller="LoginController">
+    <div class="login">
+      <img
+        src="//www.chromethemer.com/download/hd-wallpapers/pokemon-3840x2160.jpg"
+        alt="login image"
+        class="login-img"
+      />
+
+      <form name="login-form" class="login-form" ng-submit="handleSubmit()">
+        <h1 class="login-title">Login</h1>
+
+        <div class="login-content">
+          <div class="login-box">
+            <i class="ri-user-3-line login-icon"></i>
+
+            <div class="login-box-input">
+              <input
+                type="email" name="email" ng-model="email" required class="login-input" id="login-email" placeholder=" " ng-required="true"/>
+              <label for="login-email" class="login-label">E-mail</label>
+            </div>
+          </div>
+
+          <div class="login-box">
+            <i class="ri-lock-2-line login-icon"></i>
+
+            <div class="login-box-input">
+              <input
+                type="password" name="password" ng-model="password" required class="login-input" id="login-pass" placeholder=" " ng-required="true"/>
+              <label for="login-pass" class="login-label">Senha</label>
+            </div>
+            
+          </div>
+        </div>
+        <button type="submit" class="login-button">Entrar</button>
+          </div>
+      </form>
+    </div>
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/lib/jwt-decode.js"></script>
+    <script src="./assets/js/services/session.service.js"></script>
+    <script src="./assets/js/services/admin.service.js"></script>
+    <script src="./assets/js/controllers/login_controller.js"></script>
+  </body>
+</html>

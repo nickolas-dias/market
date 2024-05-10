@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="market">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/market.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.8.3/angular-locale_pt-br.min.js></script>
+  </head>
+  <body ng-controller="HomeController">
+    <header>
+      <button class="login-icon" ng-click="isAuthenticated ? logout() : goToLogin()">
+        <i class="fa-solid fa-user" ng-if="!isAuthenticated"></i> <i class="fa-solid fa-right-from-bracket" ng-if="isAuthenticated"></i>
+      </button>
+      <button class="cart-icon" ng-click="isAuthenticated ? cart() : goToLogin()" ng-if="isAuthenticated">
+        <i class="fas fa-shopping-cart"></i>
+      </button>
+      <button class="home-icon" ng-click="goToHome()">
+        <i class="fas fa-home"></i>
+      </button>
+      <button class="admin-icon" ng-if="isAuthenticated && isAdmin" ng-click="goToAdmin()">
+        <i class="fa-solid fa-crown"></i>
+      </button>
+      <button class="purchases-icon" id="compras" ng-if="isAuthenticated" ng-click="goToPurchases()">
+        <i class="fa-solid fa-money-check-dollar"></i>
+      </button>
+    </header>
+    <div class="container">
+      <div class="products-container">
+        <div ng-repeat="product in products" class="product">
+          <div class="product-content">
+            <img ng-src="{{product.imageUrl}}" alt="{{product.name}}" />
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <div class="price">{{ product.price | currency:"R$" }}</div>
+          </div>
+          <button ng-click="addToCart(product.id)" type="button" class="btn">
+              <i class="fa-solid fa-cart-plus"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://kit.fontawesome.com/b251dd8db2.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/lib/jwt-decode.js"></script>
+    <script src="./assets/js/services/session.service.js"></script>
+    <script src="./assets/js/services/admin.service.js"></script>
+    <script src="./assets/js/controllers/market_controller.js"></script>
+  </body>
+</html>

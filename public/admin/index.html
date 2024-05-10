@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="market">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/admin.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>Market Admin</title>
+  </head>
+  <body ng-controller="AdminHomeController">
+    <header>
+      <div id="title">
+        <h1>Poke</h1>
+        <h1 class="name">Nix</h1>
+      </div>
+
+      <ul>
+        <a href="../market.html" id="voltar"
+          ><li><i class="fa-solid fa-arrow-left"></i></li
+        ></a>
+        <a href="../index.html"
+          ><li><i class="fas fa-home"></i></li
+        ></a>
+        <a href="../login.html" id="sair" ng-click="logout()"
+          ><li><i class="fa-solid fa-right-from-bracket"></i></li
+        ></a>
+      </ul>
+    </header>
+
+    <div class="add-product-button">
+      <a href="./create_products.html" class="add-product-link">
+        <button class="add-product-btn">Cadastrar Produto</button>
+      </a>
+    </div>
+
+    <div class="container">
+      <h1>Lista de Produtos</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Imagem</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="product in products">
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.description }}</td>
+            <td>R$ {{ product.price | currency }}</td>
+            <td class="img-cell">
+              <img
+                ng-src="{{ product.imageUrl }}"
+                alt="{{ product.name }}"
+                style="width: 20px; height: auto"
+              />
+            </td>
+            <td class="actions">
+              <a
+                href="/admin/edit_product.html?productId={{product.id}}"
+                style="color: #fff; text-decoration: none"
+              >
+                <i class="fas fa-pencil-alt"></i>
+              </a>
+              <button
+                ng-click="deleteProduct(product.id)"
+                type="button"
+                style="
+                  background-color: transparent;
+                  border: none;
+                  color: crimson;
+                "
+              >
+                <i
+                  class="fas fa-trash-alt"
+                  style="background-color: transparent"
+                ></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script
+      src="https://kit.fontawesome.com/b251dd8db2.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/lib/jwt-decode.js"></script>
+    <script src="../assets/js/services/admin.service.js"></script>
+    <script src="../assets/js/services/session.service.js"></script>
+    <script src="../assets/js/controllers/admin_home_controller.js"></script>
+  </body>
+</html>

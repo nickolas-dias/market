@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="market">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./assets/css/styles.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>PokeNix</title>
+  </head>
+  <body ng-controller="CreateAccountController">
+    <header>
+      <div id="title">
+        <h1>Poke</h1>
+        <h1 class="name">Nix</h1>
+      </div>
+
+      <ul>
+        <a
+          href="https://play.google.com/store/apps/details?id=com.nianticlabs.pokemongo"
+          ><li>Download</li></a
+        >
+        <a href="./market.html"><li>Loja</li></a>
+        <a href="./login.html" id="inscreva-se-btn"><li>Entrar</li></a>
+      </ul>
+    </header>
+    <main>
+      <aside>
+        <p>
+          Bem-vindo ao PokeNix - o seu destino online definitivo para todas as
+          suas necessidades no mundo emocionante de Pokémon GO! <br />
+          <br />
+          Na PokéNix, estamos empenhados em fornecer a você uma experiência de
+          compra excepcional, oferecendo uma ampla gama de itens essenciais para
+          aprimorar sua jornada como treinador Pokémon. <br />
+          <br />
+          Estamos aqui para ajudá-lo a fortalecer sua equipe, enfrentar desafios
+          e alcançar novos patamares de sucesso no Pokémon GO.
+        </p>
+        <form ng-submit="handleSubmit()">
+          <h2><span>Criar Conta</span></h2>
+          <input type="text" name="name" ng-model="name" placeholder="Nome" />
+          <input
+            type="text"
+            name="email"
+            ng-model="email"
+            placeholder="E-mail"
+          />
+          <input
+            type="password"
+            name="password"
+            ng-model="password"
+            placeholder="Senha"
+          />
+          <button id="criar-conta-btn" type="submit">Criar Conta</button>
+        </form>
+      </aside>
+      <article>
+        <img
+          src="https://detectivepikachu.pokemon.com/_images/characters/pikachu-intro.png"
+          alt="pikachu"
+        />
+      </article>
+    </main>
+    <script src="./assets/js/controllers/create_account.js"></script>
+  </body>
+</html>

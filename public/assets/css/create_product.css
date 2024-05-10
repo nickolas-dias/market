@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500&display=swap");
+
+body {
+  background-color: rgb(34, 34, 34);
+  color: #f6bd20;
+  font-family: "Poppins", sans-serif;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#title {
+  flex-direction: column;
+  line-height: 10px;
+}
+
+li {
+  display: inline-block;
+  margin: 20px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #f6bd20;
+}
+
+h1,
+.name {
+  font-weight: 400;
+}
+
+.name {
+  color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+form {
+  width: 30%;
+  padding: 20px;
+  background-color: #222;
+  border-radius: 10px;
+}
+
+label {
+  margin-bottom: 10px;
+  color: #f6bd20;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+[type="submit"] {
+  height: 50px;
+  width: 50%;
+  background-color: #f6bd20;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+[type="submit"]:hover {
+  background-color: #e5a617;
+}

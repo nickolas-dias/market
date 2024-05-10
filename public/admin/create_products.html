@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="market">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastrar Produto</title>
+    <link rel="stylesheet" href="../assets/css/create_product.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  </head>
+  <body ng-controller="AdminCreateProductController">
+    <header>
+      <div id="title">
+        <h1>Poke</h1>
+        <h1 class="name">Nix</h1>
+      </div>
+
+      <ul>
+        <a href="./index.html" id="voltar"
+          ><li><i class="fa-solid fa-arrow-left"></i></li
+        ></a>
+        <a href="../index.html"
+          ><li><i class="fas fa-home"></i></li
+        ></a>
+        <a href="../login.html" id="sair" ng-click="logout()"
+          ><li><i class="fa-solid fa-right-from-bracket"></i></li
+        ></a>
+      </ul>
+    </header>
+
+    <div class="container">
+      <h1>Cadastrar Produto</h1>
+      <form ng-submit="handleSubmit()" id="product-form">
+        <div class="form-group">
+          <label for="name">Nome do produto</label>
+          <input type="text" id="name" name="name" ng-model="name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="description">Descrição do produto</label>
+          <textarea
+            id="description"
+            name="description"
+            ng-model="description"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="price">Preço do produto</label>
+          <input
+            type="text"
+            id="price"
+            name="price"
+            ng-model="price"
+            ng-change="formatPrice()"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="image-url">URL da imagem do produto</label>
+          <input
+            type="url"
+            id="image-url"
+            name="image-url"
+            ng-model="imageUrl"
+            required
+          />
+          <img
+            ng-src="{{imageUrl }}"
+            style="max-width: 200px; max-height: 200px; margin-top: 10px"
+          />
+        </div>
+
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+    <script
+      src="https://kit.fontawesome.com/b251dd8db2.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/lib/jwt-decode.js"></script>
+    <script src="../assets/js/services/admin.service.js"></script>
+    <script src="../assets/js/services/session.service.js"></script>
+    <script src="../assets/js/controllers/admin_create_product_controller.js"></script>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="market">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editar Produto</title>
+    <link rel="stylesheet" href="../assets/css/admin_edit_product.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  </head>
+  <body ng-controller="AdminEditProductController">
+    <header>
+      <div id="title">
+        <h1>Poke</h1>
+        <h1 class="name">Nix</h1>
+      </div>
+
+      <ul>
+        <a href="./index.html" id="voltar"
+          ><li><i class="fa-solid fa-arrow-left"></i></li
+        ></a>
+        <a href="../index.html"
+          ><li><i class="fas fa-home"></i></li
+        ></a>
+        <a href="../login.html" id="sair" ng-click="logout()"
+          ><li><i class="fa-solid fa-right-from-bracket"></i></li
+        ></a>
+      </ul>
+    </header>
+    <main>
+      <h1>Editar Produto</h1>
+      <form ng-submit="handleSubmit()">
+        <div>
+          <label for="name">Nome</label>
+          <input ng-model="name" type="text" id="name" name="name" required />
+        </div>
+        <div>
+          <label for="description">Descrição</label>
+          <textarea
+            ng-model="description"
+            id="description"
+            name="description"
+            rows="4"
+            required
+          ></textarea>
+        </div>
+        <div>
+          <label for="price">Preço R$</label>
+          <input
+            ng-model="price"
+            type="text"
+            id="price"
+            name="price"
+            step="0.01"
+            required
+          />
+        </div>
+        <div>
+          <label for="image">Imagem</label>
+          <input
+            ng-model="imageUrl"
+            type="url"
+            id="image"
+            name="image"
+            required
+          />
+        </div>
+        <div>
+          <button type="submit">Salvar</button>
+        </div>
+      </form>
+    </main>
+    <script
+      src="https://kit.fontawesome.com/b251dd8db2.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/lib/jwt-decode.js"></script>
+    <script src="../assets/js/services/admin.service.js"></script>
+    <script src="../assets/js/services/session.service.js"></script>
+    <script src="../assets/js/controllers/admin_edit_product_controller.js"></script>
+  </body>
+</html>
